@@ -147,13 +147,12 @@ export default function CreateExhibitor() {
             <FormField
               control={form.control}
               name="logo"
-              render={({ field: { value, onChange, ...fieldProps } }) => (
+              render={({ field: { onChange, ...fieldProps } }) => (
                 <FormItem>
                   <FormLabel className="font-bold">Logo</FormLabel>
                   <FormControl>
                     <Input
                       type="file"
-                      {...fieldProps}
                       accept="image/*"
                       onChange={(event) =>
                         onChange(event.target.files && event.target.files[0])

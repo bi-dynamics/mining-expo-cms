@@ -1,5 +1,3 @@
-import { Timestamp } from "firebase/firestore";
-
 export interface ExhibitorType {
   id: string;
   logo: string;

@@ -170,7 +170,7 @@ export default function EditExhibitor({ params }: { params: { id: string } }) {
             <FormField
               control={form.control}
               name="logo"
-              render={({ field: { value, onChange, ...fieldProps } }) => (
+              render={({ field: { onChange, ...fieldProps } }) => (
                 <FormItem>
                   <FormLabel className="font-bold">Logo</FormLabel>
                   <FormControl>
@@ -179,11 +179,14 @@ export default function EditExhibitor({ params }: { params: { id: string } }) {
                       placeholder={
                         exhibitor?.logo ? "Change logo" : "No file chosen"
                       }
-                      {...fieldProps}
                       accept="image/*"
                       onChange={(event) =>
                         onChange(event.target.files && event.target.files[0])
                       }
+                      name={fieldProps.name}
+                      ref={fieldProps.ref}
+                      onBlur={fieldProps.onBlur}
+                      disabled={fieldProps.disabled}
                     />
                   </FormControl>
                   {exhibitor?.logo && (

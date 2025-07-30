@@ -14,6 +14,7 @@ import {
   startAt,
 } from "firebase/firestore";
 import { ExhibitorType } from "./definitions";
+import { getErrorMessage } from "../utils";
 
 let lastDocumentSnapshot: DocumentSnapshot | null = null; //stores the last document fetched from previous query
 let firstDocumentSnapshot: DocumentSnapshot | null = null; //stores the first document of the current page
@@ -76,7 +77,7 @@ export async function getExhibitor(id: string) {
       return null;
     }
   } catch (error) {
-    throw new Error("Failed to fetch exhibitor data");
+    throw new Error("Failed to fetch exhibitor data " + getErrorMessage(error));
   }
 }
 

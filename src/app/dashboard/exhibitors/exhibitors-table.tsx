@@ -16,7 +16,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { ChevronLeft, ChevronRight, PlusCircle } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { toast } from "sonner";
 import { ExhibitorType } from "@/lib/Exhibitors/definitions";
@@ -28,6 +28,7 @@ import {
 import { deleteExhibitor } from "@/lib/Exhibitors/actions";
 import ExhibitorItem from "./exhibitor-item";
 import { Input } from "@/components/ui/input";
+import { getErrorMessage } from "@/lib/utils";
 
 export default function ExhibitorsTable() {
   const [exhibitors, setExhibitors] = useState<ExhibitorType[]>([]);
@@ -92,7 +93,7 @@ export default function ExhibitorsTable() {
         toast.error(result.error);
       }
     } catch (error) {
-      toast.error("An unexpected error occured.");
+      toast.error("An unexpected error occured. " + getErrorMessage(error));
     }
   };
 

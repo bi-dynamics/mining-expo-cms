@@ -6,7 +6,6 @@ import {
   collection,
   deleteDoc,
   doc,
-  Timestamp,
   updateDoc,
 } from "firebase/firestore";
 import { revalidatePath } from "next/cache";
@@ -33,6 +32,7 @@ export async function updateExhibitor(
   const data = Object.fromEntries(formData);
 
   // Prepare update object
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const updateData: Record<string, any> = {};
 
   if (data.name) updateData.name = data.name;
@@ -71,7 +71,7 @@ export async function updateExhibitor(
 
 export async function createExhibitor(formData: FormData): Promise<void> {
   const data = Object.fromEntries(formData);
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const newExhibitor: Record<string, any> = {};
 
   if (data.name) newExhibitor.name = data.name;
