@@ -147,7 +147,7 @@ export default function CreateExhibitor() {
             <FormField
               control={form.control}
               name="logo"
-              render={({ field: { onChange, ...fieldProps } }) => (
+              render={({ field: { onChange } }) => (
                 <FormItem>
                   <FormLabel className="font-bold">Logo</FormLabel>
                   <FormControl>
