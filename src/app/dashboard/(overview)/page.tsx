@@ -41,7 +41,9 @@ export default function Page() {
           </button>
         </div>
       ) : (
-        <h1 className="text-3xl font-bold">Welcome, {user.displayName}</h1>
+        <section className="text-left">
+          <h1 className="text-3xl font-bold">Welcome, {user.displayName}</h1>
+        </section>
       )}
     </div>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { Home, UsersRound, CalendarArrowUp } from "lucide-react";
+import { Home, UsersRound, CalendarArrowUp, XOctagonIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
@@ -20,8 +20,8 @@ const links = [
     pages: [
       {
         name: "Main Event Program",
-        href: "/dashboard/main-event-program",
-        icon: CalendarArrowUp,
+        href: "/dashboard/coming-soon",
+        icon: XOctagonIcon,
       },
       {
         name: "Exhibitors",
@@ -30,8 +30,8 @@ const links = [
       },
       {
         name: "Floor Plans",
-        href: "/dashboard/floor-plans",
-        icon: CalendarArrowUp,
+        href: "/dashboard/coming-soon",
+        icon: XOctagonIcon,
       },
     ],
   },
@@ -41,18 +41,18 @@ const links = [
     pages: [
       {
         name: "Conference Program",
-        href: "/dashboard/conference-program",
-        icon: CalendarArrowUp,
+        href: "/dashboard/coming-soon",
+        icon: XOctagonIcon,
       },
       {
         name: "Presentations",
-        href: "/dashboard/presentations",
-        icon: CalendarArrowUp,
+        href: "/dashboard/coming-soon",
+        icon: XOctagonIcon,
       },
       {
         name: "Speakers",
-        href: "/dashboard/speakers",
-        icon: CalendarArrowUp,
+        href: "/dashboard/coming-soon",
+        icon: XOctagonIcon,
       },
     ],
   },
@@ -62,10 +62,10 @@ const links = [
     pages: [
       {
         name: "Suppliers Platform",
-        href: "/dashboard/suppliers-platform",
-        icon: CalendarArrowUp,
+        href: "/dashboard/coming-soon",
+        icon: XOctagonIcon,
       },
-      { name: "B2B", href: "/dashboard/b2b", icon: CalendarArrowUp },
+      { name: "B2B", href: "/dashboard/coming-soon", icon: XOctagonIcon },
     ],
   },
 ];
@@ -77,7 +77,7 @@ export default function NavLinks() {
       <Link
         href="/dashboard"
         className={clsx(
-          "flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-blue-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3",
+          "flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-100 p-3 text-sm font-medium hover:bg-blue-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3",
           {
             "bg-blue-100 text-blue-600": pathname === "/dashboard",
           }
@@ -95,12 +95,15 @@ export default function NavLinks() {
               <AccordionItem value={index.toString()}>
                 <AccordionTrigger
                   className={clsx(
-                    "font-bold bg-gray-50 text-black rounded-md p-3",
+                    "font-bold bg-gray-100 text-black rounded-md p-3",
                     {
                       "bg-blue-100 text-blue-600": links.some(
                         (l) =>
                           l.section === link.section &&
-                          l.pages.some((p) => p.href === pathname)
+                          l.pages.some(
+                            (p) =>
+                              p.href === pathname || pathname.startsWith(p.href)
+                          )
                       ),
                     }
                   )}
@@ -118,7 +121,9 @@ export default function NavLinks() {
                         className={clsx(
                           "flex h-[48px] grow items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:bg-blue-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3",
                           {
-                            "bg-blue-100 text-blue-600": pathname === page.href,
+                            "bg-blue-100 text-blue-600":
+                              pathname === page.href ||
+                              pathname.startsWith(page.href),
                           }
                         )}
                       >

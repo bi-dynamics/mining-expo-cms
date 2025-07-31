@@ -19,7 +19,6 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import COMPANY_LOGO from "../../../public/com-logo.png";
-import BACKGROUND from "../../../public/largeminingexpologo.jpg";
 import { toast } from "sonner";
 import { useState } from "react";
 import { getErrorMessage } from "@/lib/utils";
@@ -31,8 +30,6 @@ const formSchema = z.object({
 
 export default function Page() {
   const router = useRouter();
-  // const [signInWithEmailAndPassword, user, , error] =
-  //   useSignInWithEmailAndPassword(auth);
   const [isLoading, setIsLoading] = useState(false);
   let user = null;
   const form = useForm<z.infer<typeof formSchema>>({
@@ -57,7 +54,7 @@ export default function Page() {
 
       user = userCredential.user;
       if (user) {
-        toast.success("Logged in successfully!");
+        toast.success("Login successful!");
         router.push("/dashboard");
       } else {
         toast.error("Login failed. Please check your credentials.");
@@ -82,7 +79,7 @@ export default function Page() {
           alt="Company Logo"
           className="w-12 h-12 object-contain"
         />
-        <p className="font-bold text-xl ">Mining Expo</p>
+        <p className="font-bold text-xl ">Mining Expo Namibia</p>
       </div>
       <div className="flex items-center justify-center rounded-r-2xl w-full h-full">
         <div className="w-full h-full flex flex-col bg-white gap-8 items-center justify-center rounded-r-2xl">
@@ -135,15 +132,7 @@ export default function Page() {
             </form>
           </Form>
         </div>
-        <div className="w-full -z-[1] h-full flex items-center justify-center">
-          <Image
-            src={BACKGROUND}
-            alt="Login Background"
-            width={500}
-            height={500}
-            className="w-full h-full object-contain"
-          />
-        </div>
+        <div className="w-full bg-gradient-to-tr from-blue-950 to-blue-500 -z-[1] h-full flex items-center justify-center"></div>
       </div>
     </div>
   );
